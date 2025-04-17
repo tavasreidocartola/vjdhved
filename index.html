@@ -3,222 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formação 4-3-3</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .field-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .field {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 10px;
-            width: 60%;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .position {
-            background-color: #28a745;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-            position: relative;
-            font-size: 14px;
-        }
-
-        .position.selected {
-            background-color: #007bff;
-        }
-
-        .bench-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .player-card {
-            background: white;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 150px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .player-card:hover {
-            background-color: #f1f1f1;
-        }
-
-        .player-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .team-container {
-            margin-top: 20px;
-        }
-
-        .team-container .player {
-            display: inline-block;
-            margin: 10px;
-        }
-
-        .team-container .player span {
-            display: block;
-            text-align: center;
-        }
-    </style>
+    <title>Site de Apostas Fictício</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <div class="logo">ApostasFácil</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#jogos">Jogos</a>
+            <a href="#historico">Histórico</a>
+            <a href="#faq">FAQ</a>
+            <a href="#login" class="login-btn">Login</a>
+        </nav>
+    </header>
 
-<div class="container">
-    <h1>Monte seu time 4-3-3</h1>
+    <main id="home">
+        <section class="intro">
+            <h1>Bem-vindo ao ApostasFácil!</h1>
+            <p>Jogue "Mines", "Aviator" e "Double" e tenha a chance de ganhar prêmios incríveis!</p>
+            <div class="buttons">
+                <a href="#mines" class="btn">Jogar Mines</a>
+                <a href="#aviator" class="btn">Jogar Aviator</a>
+                <a href="#double" class="btn">Jogar Double</a>
+            </div>
+        </section>
+    </main>
 
-    <!-- Campo de Jogo (Formação 4-3-3) -->
-    <div class="field-container">
-        <div class="field">
-            <div id="gol" class="position">Goleiro</div>
-            <div id="zag1" class="position">Zagueiro</div>
-            <div id="zag2" class="position">Zagueiro</div>
-            <div id="lat1" class="position">Lateral</div>
-            <div id="meia1" class="position">Meio de Campo</div>
-            <div id="meia2" class="position">Meio de Campo</div>
-            <div id="lat2" class="position">Lateral</div>
-            <div id="ata1" class="position">Atacante</div>
-            <div id="ata2" class="position">Atacante</div>
-            <div id="ata3" class="position">Atacante</div>
+    <section id="jogos">
+        <h2>Jogos Disponíveis</h2>
+
+        <!-- Jogo Mines -->
+        <div class="game" id="mines">
+            <h3>Mines</h3>
+            <p>Escolha quadrados e evite as minas! Ganhe ao encontrar todos os quadrados sem minas.</p>
+            <button class="btn">Jogar Mines</button>
         </div>
-    </div>
 
-    <!-- Banco de Reservas -->
-    <h2>Banco de Reservas</h2>
-    <div class="bench-container" id="players-container">
-        <!-- Jogadores disponíveis para seleção -->
-    </div>
-
-    <!-- Time Montado -->
-    <div class="team-container" id="team-container">
-        <h3>Time Montado</h3>
-        <div id="selected-players">
-            <!-- Jogadores selecionados serão exibidos aqui -->
+        <!-- Jogo Aviator -->
+        <div class="game" id="aviator">
+            <h3>Aviator</h3>
+            <p>O avião vai subir. Tente retirar sua aposta antes que o avião caia!</p>
+            <button class="btn">Jogar Aviator</button>
         </div>
-    </div>
-</div>
 
-<script>
-// Dados dos jogadores (reais com imagens)
-const players = [
-    // Goleiros
-    { id: 1, name: "Alisson Becker", position: "Goleiro", price: 10, image: "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alisson_Becker_2018.jpg" },
-    { id: 2, name: "Weverton", position: "Goleiro", price: 9, image: "https://upload.wikimedia.org/wikipedia/commons/3/32/Weverton_2020.jpg" },
+        <!-- Jogo Double -->
+        <div class="game" id="double">
+            <h3>Double</h3>
+            <p>Escolha uma cor e aposte. Se acertar a cor única, você ganha um multiplicador alto!</p>
+            <div class="double-game">
+                <button class="color red" onclick="playDouble('red')">Vermelha</button>
+                <button class="color blue" onclick="playDouble('blue')">Azul</button>
+                <button class="color unique" onclick="playDouble('unique')">Única (Multiplicador Alto)</button>
+            </div>
+            <p id="double-result"></p>
+        </div>
+    </section>
 
-    // Zagueiros
-    { id: 3, name: "Marquinhos", position: "Zagueiro", price: 12, image: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Marquinhos_2021.jpg" },
-    { id: 4, name: "Thiago Silva", position: "Zagueiro", price: 11, image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Thiago_Silva_2019.jpg" },
-    { id: 5, name: "Éder Militão", position: "Zagueiro", price: 10, image: "https://upload.wikimedia.org/wikipedia/commons/f/f2/%C3%89der_Milit%C3%A3o_2019.jpg" },
+    <section id="historico">
+        <h2>Histórico de Apostas</h2>
+        <p>Aqui você pode ver todas as apostas feitas.</p>
+        <!-- Exemplo de histórico -->
+        <table>
+            <tr>
+                <th>Data</th>
+                <th>Jogo</th>
+                <th>Aposta</th>
+                <th>Resultado</th>
+            </tr>
+            <tr>
+                <td>17/04/2025</td>
+                <td>Mines</td>
+                <td>R$ 10,00</td>
+                <td>Ganhou R$ 20,00</td>
+            </tr>
+            <tr>
+                <td>17/04/2025</td>
+                <td>Double</td>
+                <td>R$ 5,00</td>
+                <td>Ganhou X10</td>
+            </tr>
+        </table>
+    </section>
 
-    // Laterais
-    { id: 6, name: "Danilo", position: "Lateral", price: 9, image: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Danilo_2020.jpg" },
-    { id: 7, name: "Guilherme Arana", position: "Lateral", price: 8, image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Guilherme_Arana_2019.jpg" },
-    { id: 8, name: "Alex Telles", position: "Lateral", price: 8, image: "https://upload.wikimedia.org/wikipedia/commons/0/02/Alex_Telles_2020.jpg" },
+    <footer>
+        <div>© 2025 ApostasFácil - Todos os direitos reservados.</div>
+        <div><a href="#">Termos de Serviço</a> | <a href="#">Política de Privacidade</a></div>
+    </footer>
 
-    // Meias
-    { id: 9, name: "Bruno Guimarães", position: "Meio de Campo", price: 11, image: "https://upload.wikimedia.org/wikipedia/commons/5/57/Bruno_Guimar%C3%A3es_2021.jpg" },
-    { id: 10, name: "Lucas Paquetá", position: "Meio de Campo", price: 12, image: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Lucas_Paquet%C3%A1_2020.jpg" },
-    { id: 11, name: "Casemiro", position: "Meio de Campo", price: 13, image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Casemiro_2020.jpg" },
+    <script>
+        // Função de lógica do jogo Double
+        function playDouble(selectedColor) {
+            // Cores do jogo
+            const colors = ['red', 'blue', 'unique'];
 
-    // Atacantes
-    { id: 12, name: "Neymar Jr", position: "Atacante", price: 15, image: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Neymar_2020.jpg" },
-    { id: 13, name: "Vinícius Jr", position: "Atacante", price: 14, image: "https://upload.wikimedia.org/wikipedia/commons/5/52/Vin%C3%ADcius_Jr_2021.jpg" },
-    { id: 14, name: "Gabriel Jesus", position: "Atacante", price: 13, image: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Gabriel_Jesus_2018.jpg" },
-    { id: 15, name: "Richarlison", position: "Atacante", price: 12, image: "https://upload.wikimedia.org/wikipedia/commons/6/69/Richarlison_2021.jpg" },
-    { id: 16, name: "Raphinha", position: "Atacante", price: 11, image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Raphinha_2021.jpg" }
-];
+            // Geração aleatória da cor que foi escolhida
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            let resultMessage = "Você perdeu!";
+            let multiplier = 1;
 
-// Função para exibir jogadores disponíveis no banco de reservas
-function displayPlayers() {
-    const playersContainer = document.getElementById("players-container");
-    playersContainer.innerHTML = "";
-
-    players.forEach(player => {
-        const playerCard = document.createElement("div");
-        playerCard.classList.add("player-card");
-        playerCard.innerHTML = `
-            <img src="${player.image}" alt="${player.name}">
-            <h3>${player.name}</h3>
-            <p>${player.position}</p>
-            <p>Preço: ${player.price}</p>
-        `;
-        playerCard.onclick = () => selectPlayer(player);
-        playersContainer.appendChild(playerCard);
-    });
-}
-
-// Função para permitir a seleção de jogadores para cada posição
-let selectedPlayers = {};
-
-function selectPlayer(player) {
-    const availablePositions = ['gol', 'zag1', 'zag2', 'lat1', 'meia1', 'meia2', 'lat2', 'ata1', 'ata2', 'ata3'];
-    
-    availablePositions.forEach(position => {
-        const positionElement = document.getElementById(position);
-        
-        positionElement.onclick = function() {
-            if (!selectedPlayers[position]) {
-                selectedPlayers[position] = player;
-                positionElement.innerHTML = `<img src="${player.image}" alt="${player.name}" style="width: 30px; height: auto;"> ${player.name}`;
-                positionElement.classList.add('selected');
-                updateTeam();
+            // Se o jogador acertou a cor única, multiplica o ganho
+            if (selectedColor === 'unique' && randomColor === 'unique') {
+                multiplier = 10; // multiplicador alto
+                resultMessage = `Você acertou a cor única! Multiplicador X${multiplier}!`;
+            } else if (selectedColor === randomColor) {
+                resultMessage = `Você acertou a cor ${selectedColor}!`;
             }
-        };
-    });
-}
 
-// Função para atualizar o time montado
-function updateTeam() {
-    const selectedPlayersContainer = document.getElementById("selected-players");
-    selectedPlayersContainer.innerHTML = "";
-
-    for (let position in selectedPlayers) {
-        const player = selectedPlayers[position];
-        const playerDiv = document.createElement("div");
-        playerDiv.classList.add("player");
-        playerDiv.innerHTML = `
-            <span>${position}: ${player.name}</span>
-        `;
-        selectedPlayersContainer.appendChild(playerDiv);
-    }
-}
-
-// Inicializar o site
-displayPlayers();
-</script>
-
+            // Exibe o resultado na página
+            document.getElementById('double-result').innerText = resultMessage;
+        }
+    </script>
 </body>
 </html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1d1d1d;
+        color: #fff;
+    }
+
+    header {
+        background-color: #000;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    nav a {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+
+    .login-btn {
+        background-color: #4CAF50;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .intro {
+        text-align: center;
+        padding: 50px;
+    }
+
+    .btn {
+        background-color: #4CAF50;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .game {
+        background-color: #333;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+    }
+
+    .double-game {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .color {
+        padding: 15px 25px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+
+    .unique {
+        background-color: gold;
+        color: black;
+    }
+
+    footer {
+        text-align: center;
+        background-color: #000;
+        padding: 20px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
+    p {
+        font-size: 16px;
+    }
+</style>
